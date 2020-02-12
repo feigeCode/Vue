@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Hello word</h1>
+    <hr>
+    <div id="app">
+        {{ message }}
+        <hr>
+        {{ author }}
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'hello word',
+                author: 'feige'
+            }
+        })
+    </script>
+</body>
+</html>
