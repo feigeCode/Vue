@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-bind</h1>
+<hr>
+<div id="app">
+    <!--把img标签的src属性绑定为imgUrl的值-->
+    <img v-bind:src="imgUrl" alt="">
+    <!--缩写-->
+    <img :src="imgUrl" alt="">
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            imgUrl: 'http://www.pyfeige.com/static/img/bg7.png'
+        }
+    })
+</script>
+</body>
+</html>

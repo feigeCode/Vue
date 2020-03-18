@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">
+                {{ item }}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="sortCount in sortCounts">
+                {{ sortCount }}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(sortStudent,index) in sortStudents">
+                {{ index+1 }}.姓名：{{ sortStudent.name }}    年龄：{{ sortStudent.age }}
+            </li>
+        </ul>
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items: ['feige','小飞','飞哥','飞神'],
+            counts: [12,14,25,58,69,78,25,54,1],
+            students: [
+                {name: 'feige',age: 19},
+                {name: '小飞',age: 18},
+                {name: '飞神',age: 22},
+                {name: '飞哥',age: 20}
+            ]
+        },
+        computed: {
+            sortCounts: function () {
+                return this.counts.sort(sortNumber);
+            },
+            sortStudents: function () {
+                return sortByKey(this.students,'age')
+                }
+            }
+    });
+    //数字排序加上这个函数
+    function sortNumber(a,b) {
+        return a - b;
+    }
+    //通过关键字排序
+    function sortByKey(array,key) {
+        return array.sort(function (a, b) {
+            var x = a[key];
+            var y = b[key];
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        });
+    }
+</script>
+</body>
+</html>

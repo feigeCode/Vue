@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过通过绑定自定义事件往父组件通信</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>子组件往父组件中传值</h1>
+    <h1>通过通过绑定自定义事件往父组件通信</h1>
+    <div id="app">
+
+    </div>
+    <script type="text/javascript">
+    //子组件
+    Vue.component('Child',{
+        template: '<div><input type="text" v-model="childData" @input="changeValue(childData)"/><p>我是子组件{{ childData }}</p></div>',
+        props: ['childData'],
+        methods: {
+            changeValue(val){
+                //第一个参数是父组件传给子组件的自定义事件名，第二个是要传递过去的值
+                this.$emit('childHandler',val)
+            }
+        },
+    });
+    //父组件
+    Vue.component('Parent',{
+        data(){
+            return {
+                message: "我是父组件中的数据"
+            }
+        },
+        template: '<div><p>我是父组件</p><Child :childData="message" @childHandler="childHandler"/></div>',
+        methods: {
+            childHandler(val){
+                console.log(val)
+            }
+        },
+    });
+    // 声明子组件
+    var App = {
+        template: '<div><Parent /></div>',
+    };
+        var vm = new Vue({
+            el:'#app',
+            data(){
+                return {
+                    message: "hahah"
+                }
+            },
+            components: {
+                App
+            },
+            template: '<App />'
+        });
+    </script>
+</body>
+</html>

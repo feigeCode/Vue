@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if&v-if-else&v-else&v-show</h1>
+    <hr>
+    <div id="app">
+        <div v-if="isLogin">你好,feige</div>
+        <div v-else-if="isRegister">feige</div>
+        <div v-else>请登录!</div>
+        <div v-show="isLogin">调整css中display的属性，如果为true则为block否则为none</div>
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isLogin: true,
+            isRegister: false
+        }
+    })
+</script>
+</body>
+</html>

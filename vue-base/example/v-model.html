@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-model</h1>
+<hr>
+<div id="app">
+    {{ message }}
+    <input type="text" v-model="message"><br>
+    <!--当失去焦点是加载-->
+    <input type="text" v-model.lazy="message"><br>
+    <!--当前面输入的是数字，后面是字符是只留数字-->
+    <input type="text" v-model.number="message"><br>
+    <!--删除空格-->
+    <input type="text" v-model.trim="message"><br>
+    <!--单选框-->
+    <input type="radio" v-model="sex" id="isBoy" value="男">
+    <label for="isBoy">男</label>
+    <input type="radio" v-model="sex" id="isGirl" value="女">
+    <label for="isGirl">女</label><br>
+    你选择的是：{{ sex }}<br>
+    <!--多选框绑定一个值-->
+    <input type="checkbox" v-model="isFalse" id="isFalse">
+    <label for="isFalse">{{ isFalse }}</label><br>
+    <!--多选框绑定数组-->
+    <input type="checkbox" v-model="checkbox" value="feige">
+    <input type="checkbox" v-model="checkbox" value="大哥">
+    <input type="checkbox" v-model="checkbox" value="飞哥">
+    <input type="checkbox" v-model="checkbox" value="飞神">
+    <input type="checkbox" v-model="checkbox" value="小飞">
+    {{ checkbox }}
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello word',
+            isFalse: false,
+            sex: '',
+            checkbox: []
+        }
+    })
+</script>
+</body>
+</html>

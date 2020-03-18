@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-pre&v-cloak&v-on</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-pre&v-cloak&v-on</h1>
+<hr>
+<div id="app">
+    <!--原样输出-->
+    <div v-pre>{{ message }}</div>
+    <div v-cload>渲染完成后才显示</div>
+    <!--只渲染一次-->
+    <div v-once>{{ message }}</div>
+    <div><input type="text" v-model="message"></div>
+    <div>{{ message }}</div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message: 'feige'
+        }
+    })
+</script>
+</body>
+</html>

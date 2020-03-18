@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text&v-html</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-text&v-html</h1>
+<hr>
+<div id="app">
+    <!--网速慢会先显示{{ message }}-->
+    {{ message }}
+    <!--用v-text可以解决-->
+    <span v-text="message"></span><br>
+    {{ html }}
+    <!--工作中不能用，容易被黑客攻击，特别是表单中-->
+    <span v-html="html"></span>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message: 'feige',
+            html: '<h2>feige</h2>'
+        }
+    })
+</script>
+</body>
+</html>
